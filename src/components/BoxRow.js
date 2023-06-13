@@ -101,7 +101,6 @@ export default function BoxRow() {
                         <MenuItem value={30}>Others</MenuItem>
                       </Select>
                     </FormControl>
-
                     <FormControl fullWidth>
                       <InputLabel id="demo-simple-select-label-blood-group">
                         Blood Group
@@ -129,7 +128,6 @@ export default function BoxRow() {
                       type="number"
                       variant="outlined"
                     />
-
                     <TextField
                       id="outlined-basic"
                       label="Email"
