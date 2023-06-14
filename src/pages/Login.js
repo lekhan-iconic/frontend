@@ -25,10 +25,10 @@ function Login() {
       minHeight="90vh"
     >
       <div>
-        <div className="title">
-          <h2>Welcome Back</h2>
-        </div>
         <Stack spacing={2} minWidth={300}>
+          <div className="title">
+            <h2>Welcome Back</h2>
+          </div>
           <div>
             <MyComponent />
           </div>

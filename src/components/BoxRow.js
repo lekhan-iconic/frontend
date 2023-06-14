@@ -1,5 +1,7 @@
 import * as React from "react";
 import { experimentalStyled as styled } from "@mui/material/styles";
+import axios from "axios";
+
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 import {
@@ -12,6 +14,8 @@ import {
   TextField,
 } from "@mui/material";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
   ...theme.typography.body2,
@@ -21,19 +25,31 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 export default function BoxRow() {
-  const marginH1 = {
-    margin: 0,
-  };
-  const [age, setAge] = useState("");
-  const [bloodGroup, setBloodGroup] = useState("");
+  let navigate = useNavigate();
 
-  const handleAgeChange = (event) => {
-    setAge(event.target.value);
+  const [userData, setUserData] = useState({
+    name: "",
+    userName: "",
+    email: "",
+  });
+
+  const { name, userName, email } = userData;
+
+  const handleData = (e) => {
+    setUserData((prevUserData) => ({
+      ...prevUserData,
+      [e.target.name]: e.target.value,
+    }));
   };
 
-  const handleBloodGroupChange = (event) => {
-    setBloodGroup(event.target.value);
+  const submitData = async (e) => {
+    e.preventDefault();
+    console.log(userData);
+    await axios.post("http://localhost:8083/user", userData);
+    setUserData({ name: "", userName: "", email: "" });
+    navigate("/Admin");
   };
+
   return (
     <>
       <Grid item xs={2} sm={3} md={3}>
@@ -44,128 +60,41 @@ export default function BoxRow() {
             spacing={{ xs: 2, md: 3 }}
             columns={{ xs: 1, sm: 6, md: 12 }}
           >
-            <Grid item xs={2} sm={12} md={12}>
+            <Grid item xs={2} sm={4} md={4}>
               <Item>
-                <Stack spacing={12} direction="row">
-                  <Stack spacing={2} direction="column" width={300}>
+                <form onSubmit={submitData}>
+                  <Stack spacing={2} marginTop={5} maxWidth={"40vh"}>
                     <TextField
-                      id="outlined-basic"
-                      label="First Name"
-                      type="text"
                       variant="outlined"
-                      required
-                      autoFocus
+                      label="Name"
+                      name="name"
+                      value={name}
+                      onChange={handleData}
                     />
                     <TextField
-                      id="outlined-basic"
-                      label="Last Name"
-                      type="text"
                       variant="outlined"
+                      label="User Name"
+                      name="userName"
+                      value={userName}
+                      onChange={handleData}
                     />
                     <TextField
-                      id="outlined-basic"
-                      label="Father Name"
-                      type="text"
+                      label="Email Address"
+                      name="email"
+                      value={email}
                       variant="outlined"
+                      onChange={handleData}
                     />
-                    <TextField
-                      id="outlined-basic"
-                      label="Mother Name"
-                      type="text"
-                      variant="outlined"
-                    />
-                    <TextField
-                      id="outlined-basic"
-                      label="Date of Birth"
-                      type="date"
-                      format="dd-mm-yyyy"
-                      variant="outlined"
-                    />
+                    <Stack direction={"row"} spacing={2}>
+                      <Button type="submit" variant="contained">
+                        Add User
+                      </Button>
+                      <Button href="/" color="error" variant="contained">
+                        Cancel
+                      </Button>
+                    </Stack>
                   </Stack>
-                  <Stack spacing={2} direction="column" width={300}>
-                    {/* <h1>Personal Details</h1> */}
-
-                    <FormControl fullWidth>
-                      <InputLabel id="demo-simple-select-label">
-                        Gender
-                      </InputLabel>
-                      <Select
-                        labelId="demo-simple-select-label"
-                        id="demo-simple-select"
-                        value={age}
-                        label="Gender"
-                        onChange={handleAgeChange}
-                      >
-                        <MenuItem value={10}>Male</MenuItem>
-                        <MenuItem value={20}>Female</MenuItem>
-                        <MenuItem value={30}>Others</MenuItem>
-                      </Select>
-                    </FormControl>
-                    <FormControl fullWidth>
-                      <InputLabel id="demo-simple-select-label-blood-group">
-                        Blood Group
-                      </InputLabel>
-                      <Select
-                        labelId="demo-simple-select-label-blood-group"
-                        id="demo-simple-select-blood-group"
-                        value={bloodGroup}
-                        label="Blood Group"
-                        onChange={handleBloodGroupChange}
-                      >
-                        <MenuItem value="A+">A+</MenuItem>
-                        <MenuItem value="A-">A-</MenuItem>
-                        <MenuItem value="B+">B+</MenuItem>
-                        <MenuItem value="B-">B-</MenuItem>
-                        <MenuItem value="O+">O+</MenuItem>
-                        <MenuItem value="O-">O-</MenuItem>
-                        <MenuItem value="AB+">AB+</MenuItem>
-                        <MenuItem value="AB-">AB-</MenuItem>
-                      </Select>
-                    </FormControl>
-                    <TextField
-                      id="outlined-basic"
-                      label="Aadhar No"
-                      type="number"
-                      variant="outlined"
-                    />
-                    <TextField
-                      id="outlined-basic"
-                      label="Email"
-                      type="email"
-                      variant="outlined"
-                    />
-                    <TextField
-                      id="outlined-basic"
-                      label="Mobile No"
-                      type="number"
-                      variant="outlined"
-                    />
-                  </Stack>
-                  <Stack spacing={2} direction="column" width={300}>
-                    <h2>Official Details</h2>
-                    <TextField
-                      id="outlined-basic"
-                      label="Admission Number"
-                      type="number"
-                      variant="outlined"
-                    />
-                    <TextField
-                      id="outlined-basic"
-                      label="Joining Date"
-                      type="date"
-                      variant="outlined"
-                    />
-
-                    <TextField
-                      id="outlined-basic"
-                      label="Roll Number"
-                      type="number"
-                      variant="outlined"
-                    />
-
-                    <Button variant="contained">Submit</Button>
-                  </Stack>
-                </Stack>
+                </form>
               </Item>
             </Grid>
           </Grid>
