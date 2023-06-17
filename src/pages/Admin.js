@@ -5,6 +5,7 @@ import { Link, useParams } from "react-router-dom";
 import Sidenav from "../Sidenav";
 import { Box } from "@mui/material";
 import BasicTable from "../components/BasicTable";
+import Navbar from "./Navbar";
 
 export default function Admin() {
   const [users, setUsers] = useState([]);
@@ -29,7 +30,7 @@ export default function Admin() {
       <Box sx={{ display: "flex" }}>
         <Sidenav />
         <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-          <h1>Admin</h1>
+          <Navbar />
           <BasicTable />
         </Box>
       </Box>

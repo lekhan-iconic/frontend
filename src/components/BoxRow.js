@@ -31,9 +31,12 @@ export default function BoxRow() {
     name: "",
     userName: "",
     email: "",
+    phoneNo: "",
+    fatherName: "",
+    aadharNo: "",
   });
 
-  const { name, userName, email } = userData;
+  const { name, userName, email, phoneNo, fatherName, aadharNo } = userData;
 
   const handleData = (e) => {
     setUserData((prevUserData) => ({
@@ -46,7 +49,14 @@ export default function BoxRow() {
     e.preventDefault();
     console.log(userData);
     await axios.post("http://localhost:8083/user", userData);
-    setUserData({ name: "", userName: "", email: "" });
+    setUserData({
+      name: "",
+      userName: "",
+      email: "",
+      phoneNo: "",
+      fatherName: "",
+      aadharNo: "",
+    });
     navigate("/Admin");
   };
 
@@ -66,16 +76,16 @@ export default function BoxRow() {
                   <Stack spacing={2} marginTop={5} maxWidth={"40vh"}>
                     <TextField
                       variant="outlined"
-                      label="Name"
-                      name="name"
-                      value={name}
+                      label="User Name"
+                      name="userName"
+                      value={userName}
                       onChange={handleData}
                     />
                     <TextField
                       variant="outlined"
-                      label="User Name"
-                      name="userName"
-                      value={userName}
+                      label="Name"
+                      name="name"
+                      value={name}
                       onChange={handleData}
                     />
                     <TextField
@@ -85,11 +95,34 @@ export default function BoxRow() {
                       variant="outlined"
                       onChange={handleData}
                     />
+                    <TextField
+                      name="phoneNo"
+                      type="number"
+                      label="Phone no"
+                      variant="outlined"
+                      value={phoneNo}
+                      onChange={handleData}
+                    />
+                    <TextField
+                      label="Father Name"
+                      name="fatherName"
+                      value={fatherName}
+                      variant="outlined"
+                      onChange={handleData}
+                    />
+                    <TextField
+                      label="Aadhar No"
+                      name="aadharNo"
+                      value={aadharNo}
+                      variant="outlined"
+                      onChange={handleData}
+                    />
+
                     <Stack direction={"row"} spacing={2}>
                       <Button type="submit" variant="contained">
                         Add User
                       </Button>
-                      <Button href="/" color="error" variant="contained">
+                      <Button href="/Admin" color="error" variant="contained">
                         Cancel
                       </Button>
                     </Stack>

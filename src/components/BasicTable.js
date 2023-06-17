@@ -42,7 +42,7 @@ export default function BasicTable() {
   };
 
   const deleteUsers = async (id) => {
-    await axios.delete(`http://localhost:8080/deleteUser/${id}`);
+    await axios.delete(`http://localhost:8083/delete/${id}`);
     loadUsers();
   };
   function change() {
@@ -58,7 +58,10 @@ export default function BasicTable() {
               <TableCell align="left">User ID</TableCell>
               <TableCell align="left">User Name</TableCell>
               <TableCell align="left">Name</TableCell>
+              <TableCell align="left">Father Name</TableCell>
               <TableCell align="left">Email ID</TableCell>
+              <TableCell align="left">Phone No</TableCell>
+              <TableCell align="left">Aadhar No</TableCell>
               <TableCell align="center">Actions</TableCell>
             </TableRow>
           </TableHead>
@@ -66,16 +69,19 @@ export default function BasicTable() {
             {users.map((user, index) => (
               <TableRow key={index}>
                 <TableCell>{user.id}</TableCell>
-                <TableCell>{user.name}</TableCell>
                 <TableCell>{user.userName}</TableCell>
+                <TableCell>{user.name}</TableCell>
+                <TableCell>{user.fatherName}</TableCell>
                 <TableCell>{user.email}</TableCell>
+                <TableCell>{user.phoneNo}</TableCell>
+                <TableCell>{user.aadharNo}</TableCell>
+
                 <TableCell align="center">
                   <ButtonGroup
                     variant="contained"
                     aria-label="outlined primary button group"
                   >
-                    <Button>View</Button>
-                    <a href={`/UpdateUser/${user.id}`}>
+                    <a href={`/Update/${user.id}`}>
                       <Button style={{ borderRadius: 0 }}>Update</Button>
                     </a>
 
@@ -90,7 +96,6 @@ export default function BasicTable() {
                     >
                       Delete
                     </Button>
-                    {/* </a> */}
                   </ButtonGroup>
                 </TableCell>
               </TableRow>
@@ -98,9 +103,9 @@ export default function BasicTable() {
           </TableBody>
         </Table>
       </TableContainer>
-      <Button onClick={change()} href="/Student" color="inherit">
-        Add User
-      </Button>
+      {/* <Button onClick={change()} href="/Student">
+        AddUser
+      </Button> */}
     </Container>
   );
 }

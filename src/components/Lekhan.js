@@ -1,6 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
+import $ from "jquery";
 
 const Lekhan = () => {
+  useEffect(() => {
+    // Your JavaScript code here
+    // For example:
+    $("#menu-btn").click(function () {
+      $("nav .navigation ul").addClass("active");
+    });
+
+    $("#menu-close").click(function () {
+      $("nav .navigation ul").removeClass("active");
+    });
+  }, []);
   const htmlContent = `
     <!DOCTYPE html>
 <html lang="en">
@@ -19,28 +31,30 @@ const Lekhan = () => {
   </head>
   <body>
     <nav>
-      <img src="images/logo.jpg" alt="" />
-      <h1>Applogic Computer Institution</h2>
+      <img src="images/logofinal (2).png" alt="" />
+      
       <div class="navigation">
         <ul>
           <i id="menu-close" class="fas fa-times"></i>
           <li><a href="#home">Home</a></li>
-          <li><a href="#about">About Us</a></li>
-          <li><a href="#">Contact Us</a></li>
-          <li><a href="#">Courses</a></li>
-          <li><a href="login">Login</a></li>
+          <li><a href="#course">Courses</a></li>
+          <li><a href="#about">About us</a></li>
+          <li><a href="#">Contact us</a></li>
+          
+          <li><a href="/login">Login</a></li>
         </ul>
         <img id="menu-btn" src="images/download.png" alt="" />
       </div>
     </nav>
 
     <section id="home">
-      <h2>Enhance Your Future</h2>
+      <h2>Applogic Computer Institute</h2>
+      <h2>Helps You In Enhancing Your Coding Skills</h2>
       <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, ex amet?
-        Corporis, eveniet. Magnam tenetur cumque culpa inventore nobis veniam
-        cupiditate. Tempora quibusdam omnis totam quidem illo ratione deserunt
-        optio.
+        This Institution teaches complex Coding concepts in a very simple manner, So that every
+        individual can understand and grasp the core concepts. It also helps the Home Makers to 
+        improve their knowledge in field of Technology. This is the place where one child can build
+        a strong Foundation in their education, character development, and personal growth.
       </p>
       <div class="btn">
         <a class="blue" href="#">Learn More</a>
@@ -50,133 +64,136 @@ const Lekhan = () => {
 
     <section id="features">
       <h1>Awesome Features</h1>
-      <p>Replenish man have thing gathering lights yielding shall you</p>
+      <p>Experienced Instructors who can provide guidance and expertise in various computer-related subjects </p>
+      <p>and technologies.</p>     
       <div class="fea-base">
         <div class="fea-box">
           <i class="fas fa-graduation-cap"></i>
-          <h3>Scholorship Facility</h3>
+          <h3>Experienced Instructors</h3>
           <p>
-            This is website for the educational and the most useful to the
-            students and the people
+            This institute typically have qualified and experienced instructors who can provide 
+            guidance and expertise in various computer-related subjects and technologies.
           </p>
         </div>
         <div class="fea-box">
           <i class="fas fa-file-certificate"></i>
-          <h3>Dell Online Courses</h3>
+          <h3>Practical Hands-on Training</h3>
           <p>
-            This is website for the educational and the most useful to the
-            students and the people
+            This Institute emphasize hands-on training to ensure students gain practical skills. They provide 
+            access to computer labs equipped with the necessary software and hardware to allow students
+            to apply their knowledge through practical exercises and projects.
           </p>
         </div>
         <div class="fea-box">
           <i class="fas fa-award"></i>
-          <h3>Global Certification</h3>
+          <h3>Course Certification</h3>
           <p>
-            This is website for the educational and the most useful to the
-            students and the people
+            This Institution offers certification programs upon completion of specific courses or tracks.
+            These certifications can add value to a student's resume and demonstrate their proficiency 
+            in a particular technology or skill.
           </p>
         </div>
       </div>
     </section>
     <section id="course">
       <h1>Our Popular Courses</h1>
-      <p>Replenish man have thing gathering lights yielding shall you</p>
+      <p>Programming Language's and Package's </p>
       <div class="course-box">
         <div class="courses">
           <img src="images/course1.jpg" alt="" />
           <div class="details">
             <span>Updated 13-06-2023</span>
-            <h6>JavaScript Beginners Course</h6>
+            <h6>C Language</h6>
             <div class="star">
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
-              <span>(239)</span>
+              <span>(789)</span>
             </div>
           </div>
-          <div class="cost">$49.99</div>
+          <div class="cost">$46.13</div>
         </div>
         <div class="courses">
           <img src="images/course2.jpg" alt="" />
           <div class="details">
             <span>Updated 13-06-2023</span>
-            <h6>JavaScript Beginners Course</h6>
+            <h6>Java</h6>
             <div class="star">
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <span>(239)</span>
+              <i class="far fa-star"></i>
+              <span>(356)</span>
             </div>
           </div>
-          <div class="cost">$49.99</div>
+          <div class="cost">$48.56</div>
         </div>
         <div class="courses">
-          <img src="images/course3.jpg" alt="" />
+          <img src="images/pythonimg.jpg"" alt="" />
           <div class="details">
             <span>Updated 13-06-2023</span>
-            <h6>JavaScript Beginners Course</h6>
+            <h6>Python</h6>
             <div class="star">
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <span>(239)</span>
+              <i class="far fa-star"></i>
+              <span>(390)</span>
             </div>
           </div>
-          <div class="cost">$49.99</div>
+          <div class="cost">$48.56</div>
         </div>
         <div class="courses">
           <img src="images/courses.jpg" alt="" />
           <div class="details">
             <span>Updated 13-06-2023</span>
-            <h6>JavaScript Beginners Course</h6>
+            <h6>Tally</h6>
             <div class="star">
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <span>(239)</span>
+              <i class="fas fa-star-half-alt"></i>
+              <span>(276)</span>
             </div>
           </div>
-          <div class="cost">$49.99</div>
+          <div class="cost">$49.12</div>
         </div>
         <div class="courses">
           <img src="images/course4.jpg" alt="" />
           <div class="details">
             <span>Updated 13-06-2023</span>
-            <h6>JavaScript Beginners Course</h6>
+            <h6>MS-Office</h6>
             <div class="star">
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
-              <span>(239)</span>
+              <span>(735)</span>
             </div>
           </div>
-          <div class="cost">$49.99</div>
+          <div class="cost">$30.35</div>
         </div>
         <div class="courses">
           <img src="images/course5.jpg" alt="" />
           <div class="details">
             <span>Updated 13-06-2023</span>
-            <h6>JavaScript Beginners Course</h6>
+            <h6>Autocad</h6>
             <div class="star">
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
+              <i class="far fa-star"></i>
               <span>(239)</span>
             </div>
           </div>
-          <div class="cost">$49.99</div>
+          <div class="cost">$50.92</div>
         </div>
       </div>
     </section>
@@ -275,7 +292,7 @@ const Lekhan = () => {
       <div class="copyright">
         <p>
           copyright @2020 All rights reserved | This template is made by
-          AppLogic
+          Applogic.
         </p>
         <div class="pro-links">
           <i class="fab fa-facebook"></i>
@@ -293,9 +310,7 @@ const Lekhan = () => {
       });
     </script>
   </body>
-</html>
-
-  `;
+</html>  `;
 
   return (
     <div>
